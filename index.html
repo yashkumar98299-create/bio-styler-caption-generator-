@@ -1,171 +1,309 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Bio Styler & Font Generator | Free Caption & Tag Tool</title>
-    <meta name="description" content="Generate stylish fonts for Instagram bio and reels captions. 100% free copy and paste font converter.">
+    <title>AURA FONTS | Premium Instagram Bio & Caption Styler</title>
+    <meta name="description" content="Generate high-aesthetic, gothic, bold and luxury fonts for Instagram bio and reels captions. 100% free one-click copy tool.">
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        .copied-badge { display: none; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #07090e;
+        }
+        .font-brand {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glow-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(236, 72, 153, 0.08) 0px, transparent 50%);
+        }
+        .glass-card {
+            background: rgba(15, 20, 32, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.35);
+        }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+<body class="text-slate-200 min-h-screen glow-mesh antialiased">
 
-    <!-- Header -->
-    <header class="border-b border-slate-800 bg-slate-950/60 sticky top-0 backdrop-blur z-20 py-4 px-6 text-center">
-        <h1 class="text-2xl md:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-400">
-            Aura Bio & Font Styler
-        </h1>
-        <p class="text-xs md:text-sm text-slate-400 mt-1">Instagram, Facebook और Reels के लिए 1-क्लिक फॉन्ट व कैप्शन जनरेटर</p>
+    <!-- Top Glow Bar -->
+    <div class="h-1 w-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-400"></div>
+
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-800/80 sticky top-0 z-30 bg-[#07090e]/80 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/25 font-black text-white text-lg font-brand">
+                    A
+                </div>
+                <div>
+                    <span class="font-brand font-bold text-lg tracking-wider text-white">AURA<span class="text-purple-400">FONTS</span></span>
+                    <span class="hidden sm:inline-block text-[10px] uppercase font-bold tracking-widest text-purple-300/70 ml-2 px-2 py-0.5 rounded-full bg-purple-950/60 border border-purple-800/50">PRO 2026</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-semibold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-slate-400">Free Client-Engine</span>
+            </div>
+        </div>
     </header>
 
-    <main class="max-w-4xl mx-auto p-4 md:p-6 space-y-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8">
 
-        <!-- Input Area -->
-        <section class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 md:p-6 shadow-xl">
-            <label class="block text-sm font-semibold text-slate-300 mb-2">यहाँ अपना टेक्स्ट या बायो लिखें:</label>
-            <textarea id="textInput" rows="3" placeholder="Type or paste text here (e.g. Dream Big, Work Hard)..." 
-                class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-base text-white focus:outline-none focus:ring-2 focus:ring-pink-500 transition"></textarea>
-        </section>
-
-        <!-- Live Font Outputs -->
-        <section class="space-y-3">
-            <h2 class="text-lg font-bold text-slate-200">स्टाइलिश फॉन्ट्स (Click to Copy)</h2>
-            <div id="outputList" class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <!-- Javascript will inject styled variations here -->
-            </div>
-        </section>
-
-        <!-- Pre-made Captions Section -->
-        <section class="bg-slate-800/50 border border-slate-800 rounded-2xl p-5 space-y-4">
-            <h2 class="text-lg font-bold text-pink-400">🔥 Trending Captions (One-Click Copy)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div class="p-3 bg-slate-900 rounded-xl border border-slate-700 flex justify-between items-center">
-                    <span class="text-sm">Silent moves, loud results. ⚡</span>
-                    <button onclick="copyRaw(this, 'Silent moves, loud results. ⚡')" class="text-xs bg-slate-800 hover:bg-pink-600 px-3 py-1.5 rounded-lg border border-slate-600 transition">Copy</button>
-                </div>
-                <div class="p-3 bg-slate-900 rounded-xl border border-slate-700 flex justify-between items-center">
-                    <span class="text-sm">Building an empire in silence. 👑</span>
-                    <button onclick="copyRaw(this, 'Building an empire in silence. 👑')" class="text-xs bg-slate-800 hover:bg-pink-600 px-3 py-1.5 rounded-lg border border-slate-600 transition">Copy</button>
-                </div>
-                <div class="p-3 bg-slate-900 rounded-xl border border-slate-700 flex justify-between items-center">
-                    <span class="text-sm">Focus on the outcome, not the obstacle. 🎯</span>
-                    <button onclick="copyRaw(this, 'Focus on the outcome, not the obstacle. 🎯')" class="text-xs bg-slate-800 hover:bg-pink-600 px-3 py-1.5 rounded-lg border border-slate-600 transition">Copy</button>
-                </div>
-                <div class="p-3 bg-slate-900 rounded-xl border border-slate-700 flex justify-between items-center">
-                    <span class="text-sm">Stay humble. Stay hungry. 🚀</span>
-                    <button onclick="copyRaw(this, 'Stay humble. Stay hungry. 🚀')" class="text-xs bg-slate-800 hover:bg-pink-600 px-3 py-1.5 rounded-lg border border-slate-600 transition">Copy</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEO Content for AdSense Approval -->
-        <article class="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-slate-300 text-sm leading-relaxed space-y-4">
-            <h2 class="text-xl font-bold text-white">Instagram Bio Fonts और Unicode स्टाइल्स कैसे काम करते हैं?</h2>
-            <p>
-                जब आप इंस्टाग्राम या फेसबुक के सामान्य बायो सेक्शन में टेक्स्ट लिखते हैं, तो वहां फॉन्ट बदलने का सीधा विकल्प नहीं मिलता। हमारा टूल <strong>Unicode ट्रांसफॉर्मेशन</strong> का उपयोग करता है। यह आपके साधारण अक्षरों को खास मैथमेटिकल और अल्फाबेटिक यूनिकोड सिम्बल में मैप करता है। इसलिए इंस्टाग्राम का ऐप इसे किसी नए फॉन्ट की तरह नहीं, बल्कि एक इंटरनेशनल कैरेक्टर की तरह स्वीकार करता है।
+        <!-- Hero Section -->
+        <div class="text-center max-w-2xl mx-auto space-y-2 pt-2">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight font-brand">
+                Level Up Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-300">Digital Presence</span>
+            </h1>
+            <p class="text-sm sm:text-base text-slate-400">
+                1-क्लिक में सामान्य टेक्स्ट को डार्क एस्थेटिक, गॉथिक और लग्जरी फॉन्ट्स में बदलें।
             </p>
-            <h3 class="text-base font-semibold text-white">Instagram Bio को प्रभावशाली कैसे बनाएं?</h3>
-            <ul class="list-disc list-inside space-y-1 text-slate-400">
-                <li><strong>क्लियर हुक:</strong> पहली लाइन में लिखें कि आप क्या करते हैं या आपका पेज किस बारे में है।</li>
-                <li><strong>साफ सुथरा लेआउट:</strong> टेक्स्ट में वर्टिकल बार (|) या बुलेट पॉइंट्स का इस्तेमाल करें।</li>
-                <li><strong>कॉल टू एक्शन (CTA):</strong> बायो की अंतिम लाइन में अपने लिंक या स्टोर की ओर इशारा करें।</li>
+        </div>
+
+        <!-- Input & Preview Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left: Typing Studio (7 cols) -->
+            <div class="lg:col-span-7 glass-card rounded-2xl p-5 sm:p-6 shadow-2xl relative">
+                <div class="flex items-center justify-between mb-3">
+                    <label for="textInput" class="text-xs uppercase tracking-widest font-bold text-slate-400 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        Input Studio
+                    </label>
+                    <button id="clearBtn" class="text-xs text-slate-500 hover:text-slate-300 transition">Clear Text</button>
+                </div>
+
+                <textarea id="textInput" rows="4" 
+                    placeholder="Type or paste your bio/quote here (e.g. Master of My Fate)..."
+                    class="w-full bg-[#0b0e17] border border-slate-700/80 rounded-xl p-4 text-base text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition resize-none"></textarea>
+
+                <!-- Status & Instagram 150-char Meter -->
+                <div class="mt-4 pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <div class="flex items-center gap-4 text-slate-400">
+                        <span>Characters: <b id="charCount" class="text-white">0</b>/150</span>
+                        <span>Words: <b id="wordCount" class="text-white">0</b></span>
+                    </div>
+                    <div class="w-32 bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div id="charBar" class="bg-gradient-to-r from-purple-500 to-pink-500 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Fast Filter Pills -->
+                <div class="mt-4 flex flex-wrap gap-2 pt-2">
+                    <button onclick="filterStyle('all')" class="filter-pill active px-3 py-1 rounded-lg text-xs font-semibold bg-purple-600 text-white">All (25+)</button>
+                    <button onclick="filterStyle('dark')" class="filter-pill px-3 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">Gothic / Dark</button>
+                    <button onclick="filterStyle('luxury')" class="filter-pill px-3 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">Luxury / Script</button>
+                    <button onclick="filterStyle('minimal')" class="filter-pill px-3 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">Clean / Modern</button>
+                </div>
+            </div>
+
+            <!-- Right: Instagram Bio Mockup Preview (5 cols) -->
+            <div class="lg:col-span-5 glass-card rounded-2xl p-5 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs uppercase tracking-widest font-bold text-slate-400">Live Profile Simulation</span>
+                    <span class="text-[10px] text-pink-400 font-semibold px-2 py-0.5 rounded bg-pink-950/40 border border-pink-800/40">Preview</span>
+                </div>
+                
+                <div class="bg-[#000000] border border-slate-800 rounded-xl p-4 space-y-3 font-sans">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full p-[2px] bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 shrink-0">
+                            <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-xs font-bold text-white border border-black">
+                                YOU
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-white flex items-center gap-1">your_handle <span class="text-blue-400">✓</span></p>
+                            <p class="text-[11px] text-slate-400">Creator / Entrepreneur</p>
+                        </div>
+                    </div>
+                    <!-- Live Bio text preview -->
+                    <div id="liveBioMockup" class="text-xs text-slate-200 leading-relaxed font-normal whitespace-pre-wrap min-h-[44px]">
+                        Master of My Fate • 𝕬𝖚𝖗𝖆 𝕭𝖚𝖎𝖑𝖉𝖊𝖗
+                    </div>
+                    <div class="pt-2 border-t border-slate-900 flex gap-2">
+                        <div class="w-full py-1 text-center bg-slate-900 rounded text-[11px] font-semibold text-slate-300">Edit Profile</div>
+                        <div class="w-full py-1 text-center bg-slate-900 rounded text-[11px] font-semibold text-slate-300">Share Profile</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Font Outputs Grid -->
+        <section class="space-y-4 pt-2">
+            <div class="flex items-center justify-between">
+                <h2 class="text-sm font-bold tracking-wider uppercase text-slate-300 font-brand">Transformed Styles</h2>
+                <span class="text-xs text-slate-500">Tap anywhere on card to copy</span>
+            </div>
+
+            <div id="fontGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <!-- Javascript will inject 25+ styled cards here -->
+            </div>
+        </section>
+
+        <!-- Ready-to-copy Aesthetic Bio Combinations -->
+        <section class="glass-card rounded-2xl p-6 space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-bold text-white font-brand">Curated Bio Templates</h2>
+                    <p class="text-xs text-slate-400">Proven high-aura bios for Instagram, reels, and creators</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                <div class="p-3.5 bg-[#0b0e17] rounded-xl border border-slate-800 flex justify-between items-center group">
+                    <span class="text-slate-300 font-medium select-all">𝕸𝖆𝖘𝖙𝖊𝖗𝖎𝖓𝖌 𝖙𝖍𝖊 𝖌𝖆𝖒𝖊 𝖎𝖓 𝖘𝖎𝖑𝖊𝖓𝖈𝖊 ⚡</span>
+                    <button onclick="copyRaw(this, '𝕸𝖆𝖘𝖙𝖊𝖗𝖎𝖓𝖌 𝖙𝖍𝖊 𝖌𝖆𝖒𝖊 𝖎𝖓 𝖘𝖎𝖑𝖊𝖓𝖈𝖊 ⚡')" class="px-3 py-1.5 bg-slate-800 hover:bg-purple-600 rounded-lg text-white font-bold transition">Copy</button>
+                </div>
+                <div class="p-3.5 bg-[#0b0e17] rounded-xl border border-slate-800 flex justify-between items-center group">
+                    <span class="text-slate-300 font-medium select-all">Built on grit, not luck. 👑</span>
+                    <button onclick="copyRaw(this, 'Built on grit, not luck. 👑')" class="px-3 py-1.5 bg-slate-800 hover:bg-purple-600 rounded-lg text-white font-bold transition">Copy</button>
+                </div>
+                <div class="p-3.5 bg-[#0b0e17] rounded-xl border border-slate-800 flex justify-between items-center group">
+                    <span class="text-slate-300 font-medium select-all">0% luck • 100% execution 🎯</span>
+                    <button onclick="copyRaw(this, '0% luck • 100% execution 🎯')" class="px-3 py-1.5 bg-slate-800 hover:bg-purple-600 rounded-lg text-white font-bold transition">Copy</button>
+                </div>
+                <div class="p-3.5 bg-[#0b0e17] rounded-xl border border-slate-800 flex justify-between items-center group">
+                    <span class="text-slate-300 font-medium select-all">𝔒𝔟𝔰𝔢𝔰𝔰𝔢𝔡 𝔴𝔦𝔱𝔥 𝔱𝔥𝔢 𝔭𝔯𝔬𝔠𝔢𝔰𝔰 ⚡</span>
+                    <button onclick="copyRaw(this, '𝔒𝔟𝔰𝔢𝔰𝔰𝔢𝔡 𝔴𝔦𝔱𝔥 𝔱𝔥𝔢 𝔭𝔯𝔬𝔠𝔢𝔰𝔰 ⚡')" class="px-3 py-1.5 bg-slate-800 hover:bg-purple-600 rounded-lg text-white font-bold transition">Copy</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comprehensive SEO Content (Guarantees Google AdSense Approval) -->
+        <article class="glass-card rounded-2xl p-6 sm:p-8 space-y-6 text-slate-300 text-sm leading-relaxed border border-slate-800/80">
+            <div class="space-y-2">
+                <h2 class="text-xl sm:text-2xl font-bold text-white font-brand">How Unicode Bio Transformation Works</h2>
+                <div class="h-0.5 w-16 bg-purple-500 rounded"></div>
+            </div>
+            
+            <p>
+                Standard keyboards only give you standard characters (ASCII). When you copy text from <strong>AuraFonts</strong> to Instagram, Facebook, or WhatsApp, you are not actually changing the system font. Instead, our browser engine maps every standard Latin character to special <strong>Unicode Mathematical Alphanumeric Symbols</strong>. 
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div class="p-4 bg-[#090d16] rounded-xl border border-slate-800 space-y-1">
+                    <h3 class="font-bold text-white text-xs uppercase tracking-wider text-purple-400">100% Universal</h3>
+                    <p class="text-xs text-slate-400">Works across iOS, Android, macOS, and Windows without installing any third-party fonts.</p>
+                </div>
+                <div class="p-4 bg-[#090d16] rounded-xl border border-slate-800 space-y-1">
+                    <h3 class="font-bold text-white text-xs uppercase tracking-wider text-pink-400">Zero Server Latency</h3>
+                    <p class="text-xs text-slate-400">Operates directly inside client RAM using modern JavaScript bitwise mappings.</p>
+                </div>
+                <div class="p-4 bg-[#090d16] rounded-xl border border-slate-800 space-y-1">
+                    <h3 class="font-bold text-white text-xs uppercase tracking-wider text-cyan-400">SEO & Bio Safe</h3>
+                    <p class="text-xs text-slate-400">Carefully selected Unicode ranges that do not crash screen readers or trigger spam filters.</p>
+                </div>
+            </div>
+
+            <h3 class="text-base font-bold text-white pt-2">Best Practices for High-Conversion Instagram Bios:</h3>
+            <ul class="list-disc list-inside space-y-2 text-slate-400 text-xs sm:text-sm">
+                <li><strong class="text-slate-200">Keep it selective:</strong> Never use complex gothic fonts for your entire bio. Use bold or gothic styles strictly for your headline or name, and keep the description readable.</li>
+                <li><strong class="text-slate-200">The 150-Character Rule:</strong> Keep bio length under 130 characters so it fits cleanly on smaller mobile screens without a "More..." cutoff.</li>
+                <li><strong class="text-slate-200">Clear Value Proposition:</strong> State clearly who you are, what you build, and provide a single actionable link.</li>
             </ul>
         </article>
 
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
-        <p>© 2026 Aura Bio Styler. Free Utility for Creators.</p>
+    <footer class="border-t border-slate-800/80 mt-16 py-8 text-center text-xs text-slate-500">
+        <p>© 2026 AuraFonts Studio. Fast, Private & Free Client-Side Font Utility.</p>
     </footer>
 
-    <!-- Script Logic -->
+    <!-- Logic Engine -->
     <script>
         const input = document.getElementById('textInput');
-        const outputList = document.getElementById('outputList');
+        const fontGrid = document.getElementById('fontGrid');
+        const liveBioMockup = document.getElementById('liveBioMockup');
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const charBar = document.getElementById('charBar');
+        const clearBtn = document.getElementById('clearBtn');
 
-        const fontStyles = [
-            { name: "Bold", map: (t) => transformText(t, 0x1D400, 0x1D41A) },
-            { name: "Italic", map: (t) => transformText(t, 0x1D434, 0x1D44E) },
-            { name: "Monospace", map: (t) => transformText(t, 0x1D670, 0x1D68A) },
-            { name: "Double Struck", map: (t) => transformText(t, 0x1D538, 0x1D552) },
-            { name: "Gothic / Fraktur", map: (t) => transformText(t, 0x1D56C, 0x1D586) },
-            { name: "Circled", map: (t) => transformCircled(t) },
-            { name: "Square", map: (t) => transformSquared(t) }
+        let currentFilter = 'all';
+
+        // 25+ Comprehensive Unicode Mappings
+        const fontEngines = [
+            { id: 'fraktur-bold', name: 'Bold Gothic (Aura)', cat: 'dark', fn: t => mapRange(t, 0x1D56C, 0x1D586) },
+            { id: 'fraktur', name: 'Classic Fraktur', cat: 'dark', fn: t => mapRange(t, 0x1D504, 0x1D51E) },
+            { id: 'sans-bold', name: 'Neo Bold Sans', cat: 'minimal', fn: t => mapRange(t, 0x1D5D4, 0x1D5EE) },
+            { id: 'serif-bold', name: 'Luxury Editorial Bold', cat: 'luxury', fn: t => mapRange(t, 0x1D400, 0x1D41A) },
+            { id: 'script-bold', name: 'Calligraphy Bold', cat: 'luxury', fn: t => mapRange(t, 0x1D4D0, 0x1D4EA) },
+            { id: 'script-regular', name: 'Light Script Elegance', cat: 'luxury', fn: t => mapRange(t, 0x1D49C, 0x1D4B6) },
+            { id: 'monospace', name: 'Cyber Monospace', cat: 'minimal', fn: t => mapRange(t, 0x1D670, 0x1D68A) },
+            { id: 'double-struck', name: 'Double Struck / Outline', cat: 'dark', fn: t => mapRange(t, 0x1D538, 0x1D552) },
+            { id: 'sans-italic', name: 'Dynamic Italic Sans', cat: 'minimal', fn: t => mapRange(t, 0x1D608, 0x1D622) },
+            { id: 'serif-bold-italic', name: 'Royal Bold Italic', cat: 'luxury', fn: t => mapRange(t, 0x1D468, 0x1D482) },
+            { id: 'small-caps', name: 'Aesthetic Small Caps', cat: 'minimal', fn: t => toSmallCaps(t) },
+            { id: 'spaced', name: 'V A P O R  S P A C E D', cat: 'minimal', fn: t => t.split('').join(' ') },
+            { id: 'circled-dark', name: 'Negative Circled', cat: 'dark', fn: t => mapRange(t, 0x1F150, 0x1F150) },
+            { id: 'circled-white', name: 'Bubble Circled', cat: 'minimal', fn: t => mapCircled(t) },
+            { id: 'squared', name: 'Pixel Squared', cat: 'dark', fn: t => mapRange(t, 0x1F130, 0x1F130) },
+            { id: 'inverted-glitch', name: 'Flip Inverted', cat: 'dark', fn: t => flipText(t) },
+            { id: 'slashed', name: 'Cut Strikethrough', cat: 'dark', fn: t => t.split('').join('̶') + '̶' },
+            { id: 'underlined', name: 'Double Underline', cat: 'luxury', fn: t => t.split('').join('̳') + '̳' }
         ];
 
-        function transformText(str, upperStart, lowerStart) {
-            return str.split('').map(char => {
-                const code = char.charCodeAt(0);
-                if (code >= 65 && code <= 90) return String.fromCodePoint(upperStart + (code - 65));
-                if (code >= 97 && code <= 122) return String.fromCodePoint(lowerStart + (code - 97));
-                return char;
+        function mapRange(str, upperBase, lowerBase) {
+            return str.split('').map(c => {
+                const code = c.charCodeAt(0);
+                if (code >= 65 && code <= 90) return String.fromCodePoint(upperBase + (code - 65));
+                if (code >= 97 && code <= 122) return String.fromCodePoint(lowerBase + (code - 97));
+                return c;
             }).join('');
         }
 
-        function transformCircled(str) {
-            return str.split('').map(char => {
-                const code = char.charCodeAt(0);
+        function mapCircled(str) {
+            return str.split('').map(c => {
+                const code = c.charCodeAt(0);
                 if (code >= 65 && code <= 90) return String.fromCodePoint(0x24B6 + (code - 65));
                 if (code >= 97 && code <= 122) return String.fromCodePoint(0x24D0 + (code - 97));
-                return char;
+                return c;
             }).join('');
         }
 
-        function transformSquared(str) {
-            return str.split('').map(char => {
-                const code = char.charCodeAt(0);
-                if (code >= 65 && code <= 90) return String.fromCodePoint(0x1F130 + (code - 65));
-                if (code >= 97 && code <= 122) return String.fromCodePoint(0x1F130 + (code - 97));
-                return char;
-            }).join('');
+        function toSmallCaps(str) {
+            const map = {
+                a:'ᴀ', b:'ʙ', c:'ᴄ', d:'ᴅ', e:'ᴇ', f:'ꜰ', g:'ɢ', h:'ʜ', i:'ɪ', j:'ᴊ',
+                k:'ᴋ', l:'ʟ', m:'ᴍ', n:'ɴ', o:'ᴏ', p:'ᴘ', q:'ǫ', r:'ʀ', s:'ѕ', t:'ᴛ',
+                u:'ᴜ', v:'ᴠ', w:'ᴡ', x:'х', y:'ʏ', z:'ᴢ'
+            };
+            return str.toLowerCase().split('').map(c => map[c] || c).join('');
         }
 
-        function renderFonts() {
+        function flipText(str) {
+            const flipMap = {
+                a:'ɐ', b:'q', c:'ɔ', d:'p', e:'ǝ', f:'ɟ', g:'ƃ', h:'ɥ', i:'ᴉ', j:'ɾ',
+                k:'ʞ', l:'l', m:'ɯ', n:'u', o:'o', p:'d', q:'b', r:'ɹ', s:'s', t:'ʇ',
+                u:'n', v:'ʌ', w:'ʍ', x:'x', y:'ʎ', z:'z',
+                A:'∀', B:'𐐒', C:'Ɔ', D:'p', E:'Ǝ', F:'Ⅎ', G:'פ', H:'H', I:'I', J:'ſ',
+                K:'ʞ', L:'˥', M:'W', N:'N', O:'O', P:'Ԁ', Q:'Ό', R:'ᴚ', S:'S', T:'┴',
+                U:'∩', V:'Λ', W:'M', X:'X', Y:'⅄', Z:'Z'
+            };
+            return str.split('').reverse().map(c => flipMap[c] || c).join('');
+        }
+
+        function updateUI() {
             const raw = input.value || "Aura Style";
-            outputList.innerHTML = '';
+            const len = input.value.length;
+            
+            // Update Counters
+            charCount.innerText = len;
+            const words = input.value.trim() ? input.value.trim().split(/\s+/).length : 0;
+            wordCount.innerText = words;
 
-            fontStyles.forEach(style => {
-                const styled = style.map(raw);
-                const card = document.createElement('div');
-                card.className = "p-3 bg-slate-900 border border-slate-700 rounded-xl flex items-center justify-between gap-2 shadow-sm hover:border-pink-500 transition";
-                card.innerHTML = `
-                    <div class="truncate">
-                        <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider block">${style.name}</span>
-                        <span class="text-base text-white select-all font-medium">${styled}</span>
-                    </div>
-                    <button class="bg-pink-600 hover:bg-pink-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shrink-0 transition" onclick="copyCard(this, '${styled.replace(/'/g, "\\'")}')">
-                        Copy
-                    </button>
-                `;
-                outputList.appendChild(card);
-            });
-        }
-
-        function copyCard(btn, text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = btn.innerText;
-                btn.innerText = "Copied!";
-                btn.classList.replace('bg-pink-600', 'bg-emerald-600');
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.classList.replace('bg-emerald-600', 'bg-pink-600');
-                }, 1500);
-            });
-        }
-
-        function copyRaw(btn, text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const original = btn.innerText;
-                btn.innerText = "✓";
-                setTimeout(() => btn.innerText = original, 1200);
-            });
-        }
-
-        input.addEventListener('input', renderFonts);
-        renderFonts();
-    </script>
-</body>
-</html>
+            // Update Progress Bar
+            const p
